@@ -1,0 +1,42 @@
+<% include layouts/header %>
+    <div class="ui main text container">
+        <div class="ui huge header"> RESTful blog app</div>
+        <div class="ui top attached segment">
+            <div class="ui divided items">
+                <% blogs.forEach((blog)=>{ %>
+                    <div class="item">
+                        <div class="image">
+                            <img src="<%= blog.image %>" alt="">
+                        </div>
+
+                        <div class="content">
+                            <a href="/blogs/<%= blog._id %>" class="header">
+                                <%= blog.title %>
+                            </a>
+
+                            <div class="meta">
+                                <span>
+                                    <%= blog.created.toDateString() %>
+                                </span>
+                            </div>
+
+                            <div class="description">
+                                <p><%= blog.body.substring(0,100) %>...</p>
+                            </div>
+
+                            <div class="extra">
+                                <a href="/blogs/<%= blog._id %>" class="ui violet floated button">
+                                    Read more
+                                    <i class="right small chevron icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <%  }); %>
+            </div>
+        </div>
+    </div>
+
+
+
+    <% include layouts/footer %>

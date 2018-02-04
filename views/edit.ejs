@@ -1,0 +1,28 @@
+<% include layouts/header %>
+    <div class="ui main text container segment">
+        <div class="ui huge header">Edit: <%= blog.title %></div>
+        <!-- We have to add ?_method=PUT as a method override because HTML forms can't process PUT requests 
+             This will be used by the method-override package to call the app.put route in index.js
+        -->
+        <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" class="ui form">
+            <div class="field">
+                <label for="title">Title</label>
+                <input type="text" value="<%= blog.title%>" name="blog[title]">
+            </div>
+            <div class="field">
+                <label for="image">Image URL</label>
+                <input type="text" value="<%= blog.image %>" name="blog[image]">
+            </div>
+    
+            <div class="field">
+                <label for="body">Content</label>
+                <textarea name="blog[body]"> <%= blog.body %></textarea>
+            </div>
+    
+            <input type="submit" class="ui violet big inverted button" value="Submit">
+        </form>
+    </div>
+
+
+
+<% include layouts/footer %>
